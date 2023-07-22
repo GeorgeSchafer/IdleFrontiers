@@ -1,29 +1,25 @@
-import PlayerCharacter from './Character.js'
+import {PlayerCharacter, Sidekick, Beast} from './Character.js'
 import ReplitDBFunctions from './ReplitDBFunctionsClass.js'
 
 const db = new ReplitDBFunctions();
 
 /*
-const enemy = {};
-enemy.imp = {
-    "name": "imp",
-    "hpt": 3,
-    "atk": 1,
-    "def": 1,
-    "exp": 1
-};
-
-db.setRecord("enemy", enemy);
 */
 
 export default function main(){
-    InitialSetup();
+    // InitialSetup();
     db.logAllRecords();
 }
 
 function InitialSetup(){
-    const playerCharacter = new PlayerCharacter();
-    playerCharacter.name = "Jade";
+
+    const playerCharacter = new PlayerCharacter('Jade');
     db.setRecord('player', playerCharacter);
+
+    const beastiary = {};
+    beastiary.imp = new Beast("imp");
+    
+    db.setRecord("beastiary", beastiary);
+
 }
 
