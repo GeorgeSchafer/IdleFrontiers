@@ -2,9 +2,9 @@ import Fraction from './mechanism/Fraction.js'
 
 class Character {
 
-    constructor(str){
+    constructor(string){
 
-        this.name = str;
+        this.name = string;
         this.hpt = new Fraction();
         this.atk = 0;
         this.def = 0;
@@ -43,13 +43,19 @@ class Job {
         this.dex = false;
         this.wis = true;
     }
+
+    toString(){
+        if(this.dex){ return "rogue" }
+        else if(this.str) { return "warrior" }
+        else if(this.wis) { return "wizard" }
+    }
 }
 
 class PlayerCharacter extends Character {
 
-    constructor(str){
-        super(str);
-        this.hpt = 128;
+    constructor(string){
+        super(string);
+        this.hpt = new Fraction(128,true);
         this.atk = 3;
         this.def = 3;
         this.dex = 1;
@@ -61,11 +67,11 @@ class PlayerCharacter extends Character {
 }
 
 class Sidekick extends Character {
-    constructor(str){
-        super(str);
-        this.hpt = 16;
-        this.atk = 1;
-        this.def = 1;
+    constructor(string){
+        super(string);
+        this.hpt = new Fraction(16,true);
+        this.atk = 16;
+        this.def = 8;
         this.job.setStr();
     }
 
@@ -74,11 +80,11 @@ class Sidekick extends Character {
 }
 
 class Beast extends Character {
-    constructor(str){
-        super(str);
-        this.hpt = 8;
-        this.atk = 1;
-        this.def = 1;   
+    constructor(string){
+        super(string);
+        this.hpt = new Fraction(8,true);
+        this.atk = 8;
+        this.def = 4;
         this.exp = 1;
         this.job.setStr();
     }

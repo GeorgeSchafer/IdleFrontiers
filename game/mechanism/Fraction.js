@@ -14,6 +14,10 @@ class Fraction {
         validate();
     }
 
+    constructor(intA, bool){
+        super(intA, intA, bool);
+    }
+
     constructor(intA, intB, bool){
         super(intA, intB);
         this.isCapped = bool;
@@ -36,12 +40,12 @@ class Fraction {
         }
     }
 
-    isWhole(){
+    #isWhole(){
         return this.numerator % this.denominator === 0;
     }
 
     toInteger(){
-        if(this.isWhole()){
+        if(this.#isWhole()){
             return this.numerator / this.denominator;
         } else {
             throw Error('Cannot represent this fraction as an integer.')
